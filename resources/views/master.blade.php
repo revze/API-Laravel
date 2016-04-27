@@ -26,5 +26,10 @@
           @yield('content')
         </div>
       </div>
+      <footer class="blue white-text">
+        <div class="container center" style="padding:20px 0">
+          Copyright &copy; 2016 Revando. All Rights Reserved.
+        </div>
+      </footer>
     </body>
   </html>
