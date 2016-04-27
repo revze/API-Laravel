@@ -14,8 +14,8 @@
           <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li><a href="/cronGetCurrency">Cron Currency</a></li>
             <li><a href="/master/currency">Currency</a></li>
-            <li><a href="/cronGetLang">Cron Lang</a></li>
-            <li><a href="/master/lang">Lang</a></li>
+            <li><a href="/cronGetLang">Cron Language</a></li>
+            <li><a href="/master/lang">Language</a></li>
             <li><a href="/cronGetCountry">Cron Country</a></li>
             <li><a href="/master/country">Country</a></li>
           </ul>
