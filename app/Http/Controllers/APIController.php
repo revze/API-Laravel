@@ -22,7 +22,7 @@ class APIController extends Controller
       if (session('token')=='') {
         $URL = env(env('API_ENV'));
         $curl = new \Curl\Curl();
-        $curl->setUserAgent('twh.22599909;Revando Corporation;');
+        $curl->setUserAgent('twh:22599909;Revando Corporation;');
         $curl->setopt(CURLOPT_SSL_VERIFYPEER, FALSE);
         $curl->get($URL."apiv1/payexpress",[
           'method'  =>  'getToken',
@@ -50,7 +50,7 @@ class APIController extends Controller
     {
       $URL = env(env('API_ENV'));
       $curl = new \Curl\Curl();
-      $curl->setUserAgent('twh.22599909;Revando Corporation;');
+      $curl->setUserAgent('twh:22599909;Revando Corporation;');
       $curl->setopt(CURLOPT_SSL_VERIFYPEER, FALSE);
       $data+=['output'=>'json','token'=>$this->token];
       $curl->get($URL.$endpoint,$data);

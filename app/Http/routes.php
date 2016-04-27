@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('master/currency');
 });
 
 Route::get('master/currency','HomeController@currency');
@@ -20,4 +20,4 @@ Route::get('cronGetCurrency','HomeController@getCurrency');
 Route::get('master/lang','HomeController@lang');
 Route::get('cronGetLang','HomeController@getLang');
 Route::get('master/country','HomeController@country');
-Route::get('cronGetLang','HomeController@getCountry');
+Route::get('cronGetCountry','HomeController@getCountry');
