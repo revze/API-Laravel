@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Currency;
 use App\Lang;
 use App\Country;
+use App\Airport;
 use App\Http\Controllers\APIController as API;
 
 class HomeController extends Controller
@@ -81,5 +82,30 @@ class HomeController extends Controller
     {
       $country = Country::all();
       return view('master.country',['country'=>$country]);
+    }
+
+    public function airport()
+    {
+      $airports = Airport::all();
+      return view('master.flight',['airports'=>$airports]);
+    }
+
+    public function getAirport()
+    {
+      $api = new API;
+      $hasil = $api->getCurl('flight_api/all_airport');
+      Airport::whereRaw('id>0')->delete();
+      $data = [];
+      foreach ($hasil->all_airport->airport as $key) {
+        $airport = new Airport;
+        $airport->airport_name = $key->airport_name;
+        $airport->airport_code = $key->airport_code;
+        $airport->location_name = $key->location_name;
+        $airport->country_id = $key->country_id;
+        $airport->save();
+        $data['id'][$airport->id] = $key->country_id;
+      }
+
+      return redirect('master/airport');
     }
 }

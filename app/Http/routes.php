@@ -21,3 +21,9 @@ Route::get('master/lang','HomeController@lang');
 Route::get('cronGetLang','HomeController@getLang');
 Route::get('master/country','HomeController@country');
 Route::get('cronGetCountry','HomeController@getCountry');
+
+Route::get('master/airport','HomeController@airport');
+Route::get('cronGetAirport','HomeController@getAirport');
+
+Route::get('airline/flight',['as'=>'airline_flight',
+                              'uses'=>'Reservasi@flight']);

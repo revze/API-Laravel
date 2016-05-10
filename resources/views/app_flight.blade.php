@@ -36,7 +36,6 @@
             <li><a href="/master/lang">Language</a></li>
             <li><a href="/cronGetCountry">Cron Country</a></li>
             <li><a href="/master/country">Country</a></li>
-            <li><a href="/airline/flight">Flight</a></li>
           </ul>
         </div>
       </nav>
