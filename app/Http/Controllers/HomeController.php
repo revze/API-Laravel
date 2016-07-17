@@ -87,7 +87,7 @@ class HomeController extends Controller
     public function airport()
     {
       $airports = Airport::all();
-      return view('master.flight',['airports'=>$airports]);
+      return view('master.airport',['airports'=>$airports]);
     }
 
     public function getAirport()

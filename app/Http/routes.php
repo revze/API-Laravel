@@ -27,3 +27,6 @@ Route::get('cronGetAirport','HomeController@getAirport');
 
 Route::get('airline/flight',['as'=>'airline_flight',
                               'uses'=>'Reservasi@flight']);
+
+Route::post('airline/flight/search',['as'=>'ajax_search_flight',
+                                      'uses'=>'Reservasi@searchFlight']);

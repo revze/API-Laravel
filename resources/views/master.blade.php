@@ -2,25 +2,83 @@
   <html>
     <head>
       <title>API Laravel</title>
+      <meta name="csrf-token" content="{{ csrf_token() }}">
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
       <link type="text/css" rel="stylesheet" href="/assets/css/materialize.min.css"  media="screen,projection"/>
       <script src="/assets/js/jquery.min.js"></script>
       <script src="/assets/js/materialize.min.js"></script>
       <script type="text/javascript">
-        function check_type() {
-          var tipe = $('#type').val();
-          if (tipe=='OW') {
-            $('#arrive_date').prop('disabled',true);
-          }
-          else {
-            $('#arrive_date').prop('disabled',false);
-          }
+      $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
-        $(function(){
+      });
+        $(document).ready(function(){
+          $('#type').change(function(){
+            var tipe = $('#type').val();
+            if (tipe=='OW') {
+              $('#arrive_date').removeClass('datepicker');
+              $('#arrive_date').prop('disabled',true);
+            }
+            else {
+              $('#arrive_date').addClass('datepicker');
+              $('#arrive_date').prop('disabled',false);
+            }
+          });
           $('select').material_select();
           $('.datepicker').pickadate({
             selectMonths: true,
             selectYears: 15
+          });
+          $('#search_flight').submit(function(e){
+            e.preventDefault();
+            $.ajax({
+              url: '{{ route('ajax_search_flight') }}',
+              type: 'POST',
+              data: $(this).serializeArray(),
+              dataType: 'json',
+              success:function(data){
+                var hasil_depart = data.departures;
+                var res_depart = hasil_depart.result;
+                var html = '<ul class="collapsible popout" data-collapsible="accordion">';
+
+                for (data in res_depart) {
+                  html += '<li>';
+                  html += '<div class="collapsible-header">';
+                  html += '<img src="'+res_depart[data].image+'">';
+                  html += res_depart[data].airlines_name+' ('+res_depart[data].full_via+') with '+res_depart[data].flight_number;
+                  html += '<div class="right">'+res_depart[data].markup_price_string+'</div>';
+                  html += '</div>';
+                  html += '<div class="collapsible-body" style="padding:10px">';
+
+                  var flights = res_depart[data].flight_infos;
+                  var flight_infos = flights.flight_info;
+
+                  for (info in flight_infos) {
+                    html += '<h5>'+flight_infos[info].flight_number+'</h5>';
+                    html += '<div class="right">';
+                    html += flight_infos[info].arrival_city+' at '+flight_infos[info].simple_arrival_time;
+                    html += '</div>';
+                    html += '<div class="left">';
+                    html += flight_infos[info].departure_city+' at '+flight_infos[info].simple_departure_time;
+                    html += '</div>';
+                    html += '<br>';
+                    html += '<hr>';
+                  }
+
+                  html += '</div>';
+                  html += '</li>';
+                }
+
+                html += '</ul>';
+
+                $('#result').html(html);
+                $('.collapsible').collapsible();
+              },
+              error:function(){
+                alert('Ajax Error');
+              }
+            });
           });
         });
       </script>
@@ -30,12 +88,14 @@
         <div class="nav-wrapper container">
           <a href="/master/currency" class="brand-logo">API Laravel</a>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="/cronGetCurrency">Cron Currency</a></li>
+            <!-- <li><a href="/cronGetCurrency">Cron Currency</a></li> -->
             <li><a href="/master/currency">Currency</a></li>
-            <li><a href="/cronGetLang">Cron Language</a></li>
+            <!-- <li><a href="/cronGetLang">Cron Language</a></li> -->
             <li><a href="/master/lang">Language</a></li>
-            <li><a href="/cronGetCountry">Cron Country</a></li>
+            <!-- <li><a href="/cronGetCountry">Cron Country</a></li> -->
             <li><a href="/master/country">Country</a></li>
+            <!-- <li><a href="/cronGetAirport">Cron Airport</a></li> -->
+            <li><a href="/master/airport">Airport</a></li>
             <li><a href="/airline/flight">Flight</a></li>
           </ul>
         </div>

@@ -14,15 +14,16 @@ class CreateSearchDatasTable extends Migration
     {
         Schema::create('search_datas',function($table){
           $table->increments('id');
-          $table->integer('id_search');
           $table->string('depart_city');
           $table->string('arrive_city');
           $table->string('depart_date');
-          $table->string('arrive_date');
+          $table->string('return_date');
           $table->string('adult');
           $table->string('child');
           $table->string('infant');
           $table->string('token');
+          $table->integer('ver');
+          $table->longtext('result');
           $table->timestamps();
         });
     }
