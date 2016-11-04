@@ -11,9 +11,7 @@
 |
 */
 
-// Route::get('/', function () {
-//     return redirect('master/currency');
-// });
+Route::get('/', 'HomeController@index');
 
 Route::get('master/currency','HomeController@currency');
 Route::get('cronGetCurrency','HomeController@getCurrency');

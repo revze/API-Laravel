@@ -13,6 +13,11 @@ use App\Http\Controllers\APIController as API;
 
 class HomeController extends Controller
 {
+    public function index()
+    {
+      return redirect('master/currency');
+    }
+    
     public function getCurrency()
     {
       $api = new API;
