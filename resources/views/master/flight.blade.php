@@ -56,7 +56,7 @@
              </select>
            </div>
            <div class="col s3">
-             <button type="submit" class="btn waves-effect waves-light">Search</button>
+             <button type="submit" class="btn blue waves-effect waves-light">Search</button>
            </div>
         </div>
       </div>

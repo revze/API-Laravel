@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h4>Country</h4>
+<h4>Airport</h4>
 <table class="striped centered">
         <thead>
           <tr>
