@@ -9,7 +9,7 @@
       <div class="col s12">
         <div class="row margin-bottom">
           <div class="input-field col s6">
-            <select type="text" name="from" id="from">
+            <select name="from" id="from">
               <option value="" disabled selected>From Airport</option>
               @foreach($airport as $key)
                 <option value="{{ $key->airport_code }}">{{ $key->airport_name }} {{ $key->airport_code }}</option>
@@ -17,7 +17,7 @@
             </select>
           </div>
           <div class="input-field col s6">
-            <select type="text" name="to" id="to">
+            <select name="to" id="to">
               <option value="" disabled selected>To Airport</option>
               @foreach($airport as $key)
                 <option value="{{ $key->airport_code }}">{{ $key->airport_name }} {{ $key->airport_code }}</option>
@@ -48,9 +48,9 @@
               @endfor
             </select>
           </div>
-           <div class="input-field col s1">
+           <div class="input-field col s2">
              <select name="child" id="child">
-               <option value selected disabled>Anak - anak</option>
+               <option value selected disabled>Anak - Anak</option>
                @for($i=0; $i<5; $i++)
                 <option value="{{ $i }}">{{ $i }}</option>
                @endfor
@@ -64,8 +64,8 @@
                @endfor
              </select>
            </div>
-           <div class="input-field col s3">
-             <button type="submit" class="btn blue darken-3 waves-effect waves-light">Search</button>
+           <div class="input-field col s2">
+             <button type="submit" class="btn blue darken-3 waves-effect waves-light" id="search_button">Search</button>
            </div>
         </div>
       </div>
