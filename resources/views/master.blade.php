@@ -1,10 +1,12 @@
 <!DOCTYPE html>
   <html>
     <head>
-      <title>API Laravel</title>
+      <title>Tiket.com API</title>
       <meta name="csrf-token" content="{{ csrf_token() }}">
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
       <link type="text/css" rel="stylesheet" href="{{ url('assets/css/materialize.min.css') }}"  media="screen,projection"/>
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link type="text/css" rel="stylesheet" href="{{ url('assets/css/product-sans.css') }}"/>
       <script src="{{ url('assets/js/jquery.min.js') }}"></script>
       <script src="{{ url('assets/js/materialize.min.js') }}"></script>
       <script type="text/javascript">
@@ -90,9 +92,9 @@
           @yield('content')
         </div>
       </div>
-      <footer class="blue white-text">
+      <footer class="white">
         <div class="container center" style="padding:20px 0">
-          Copyright &copy; 2016 Revando. All Rights Reserved.
+          Copyright &copy; 2016 <a href="https://facebook.com/revze" target="_blank">Revando</a>. All Rights Reserved.
         </div>
       </footer>
     </body>

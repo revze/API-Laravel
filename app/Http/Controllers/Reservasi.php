@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Airport;
-use App\Http\Controllers\APIController as API;
+use App\Http\Controllers\TiketAPI\APIController as API;
 use App\Log;
 use App\SearchData;
 
@@ -69,6 +69,6 @@ class Reservasi extends Controller
       $log->status_code = $hasil->diagnostic->status;
       $log->save();
 
-      return response()->json($hasil);  
+      return response()->json($hasil);
     }
 }

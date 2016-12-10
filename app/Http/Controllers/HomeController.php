@@ -9,7 +9,7 @@ use App\Currency;
 use App\Lang;
 use App\Country;
 use App\Airport;
-use App\Http\Controllers\APIController as API;
+use App\Http\Controllers\TiketAPI\APIController as API;
 
 class HomeController extends Controller
 {
@@ -17,11 +17,12 @@ class HomeController extends Controller
     {
       return redirect('master/currency');
     }
-    
+
     public function getCurrency()
     {
       $api = new API;
       $hasil = $api->getCurl('general_api/listCurrency');
+      // dd($hasil);
       Currency::whereRaw('id>0')->delete();
       $data = [];
       foreach ($hasil->result as $key) {
