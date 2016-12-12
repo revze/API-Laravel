@@ -42,24 +42,24 @@
           </div>
           <div class="input-field col s1">
             <select name="adult" id="adult">
-              <option value selected disabled>Dewasa</option>
-              @for($i=1; $i<5; $i++)
+              <!-- <option value selected disabled>Dewasa</option> -->
+              @for($i = 1; $i < 5; $i++)
                 <option value="{{ $i }}">{{ $i }}</option>
               @endfor
             </select>
           </div>
            <div class="input-field col s2">
              <select name="child" id="child">
-               <option value selected disabled>Anak - Anak</option>
-               @for($i=0; $i<5; $i++)
+               <!-- <option value selected disabled>Anak - Anak</option> -->
+               @for($i = 0; $i < 5; $i++)
                 <option value="{{ $i }}">{{ $i }}</option>
                @endfor
              </select>
            </div>
            <div class="input-field col s1">
              <select name="infant" id="infant">
-               <option value selected disabled>Bayi</option>
-               @for($i=0; $i<5; $i++)
+               <!-- <option value selected disabled>Bayi</option> -->
+               @for($i = 0; $i < 5; $i++)
                 <option value="{{ $i }}">{{ $i }}</option>
                @endfor
              </select>
